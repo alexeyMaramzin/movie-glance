@@ -1,0 +1,90 @@
+.round_button{
+    box-shadow:  6px 6px 25px 1px rgba(95, 140, 199, 0.33);
+    border-radius: 77px;
+    padding: 22px 20px 16px;
+    transition: 200ms;
+    position: relative;
+    appearance: none;
+    overflow: hidden;
+    background-color: #E6EEF8;
+    &::before {
+        --size: 0;
+        content: '';
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        width: var(--size);
+        height: var(--size);
+        background: radial-gradient(circle closest-side, #e65f63dc, transparent);
+        transform: translate(-36%, -36%);
+        transition: width .3s ease, height .3s ease;
+    }
+    &:hover{
+        transform: scale(1.05);
+        svg{
+            position: relative;
+            path{
+                fill:#E6EEF8;
+                transition: 0.3s;
+            }
+        }
+        &::before {
+            --size: 150px;
+        }
+    }
+}
+.button_active{
+    background-color: #e65f63dc;
+    border-radius: 50px;
+    padding: 18px 16px 13px;
+    transition: 200ms;
+    position: relative;
+    appearance: none;
+    overflow: hidden;
+    svg{
+        path{
+            fill:#E6EEF8;
+        }
+    }
+}
+.pagination__button{
+    box-shadow:  6px 6px 25px 1px rgba(95, 140, 199, 0.33);
+    border-radius: 77px;
+    margin: 0 10px;
+    width: 69px;
+    height: 67px;
+    font-weight: 700;
+    position: relative;
+    transition: 200ms;
+    appearance: none;
+    overflow: hidden;
+    &::before {
+        --size: 0;
+        content: '';
+        position: absolute;
+        z-index: -1;
+        left: var(--x);
+        top: var(--y);
+        width: var(--size);
+        height: var(--size);
+        background: radial-gradient(circle closest-side, #e65f63dc, transparent);
+        transform: translate(-42%, -41%);
+        transition: width .3s ease, height .3s ease;
+    }
+    &:hover{
+        transform: scale(1.05);
+        color: #E6EEF8;
+        &::before {
+            --size: 150px;
+        }
+    }
+    &_active{
+        background-color: #e65f63dc;
+        color: #E6EEF8;
+        border-radius: 77px;
+        margin: 0 10px;
+        width: 69px;
+        height: 67px;
+        font-weight: 700;
+    }
+}

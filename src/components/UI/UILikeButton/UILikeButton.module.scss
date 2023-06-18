@@ -1,0 +1,53 @@
+.like_button{
+    box-shadow: -10px -10px 25px 3px rgba(255, 255, 255, 0.63), 6px 6px 25px 1px rgba(95, 140, 199, 0.33);
+    border-radius: 77px;
+    padding: 16px 17px 9px;
+    transition: 200ms;
+    position: relative;
+    appearance: none;
+    overflow: hidden;
+    width: 69px;
+    height: 67px;
+    margin-top: auto;
+    &::before {
+        --size: 0;
+        content: '';
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        width: var(--size);
+        height: var(--size);
+        background: radial-gradient(circle closest-side, #e65f63dc, transparent);
+        transform: translate(-36%, -36%);
+        transition: width .3s ease, height .3s ease;
+    }
+    &:hover{
+        transform: scale(1.05);
+        svg{
+            position: relative;
+            transition: 0.3s;
+            fill:#E6EEF8;
+            stroke:#E6EEF8;
+        }
+        &::before {
+            --size: 150px;
+        }
+    }
+    
+}
+.like_active{
+    background-color: #e65f63dc;
+    width: 69px;
+    border-radius: 50px;
+    padding: 15px 14px 8px;
+    transition: 200ms;
+    position: relative;
+    appearance: none;
+    overflow: hidden;
+    height: 67px;
+    margin-top: auto;
+    svg{
+        fill:#E6EEF8;
+        stroke:#E6EEF8;
+    }
+}

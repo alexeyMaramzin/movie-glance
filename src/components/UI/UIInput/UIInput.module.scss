@@ -1,0 +1,36 @@
+@import '../../../assets/styles/mixins.scss';
+.UIInput{
+    color: rgba(95, 105, 127, 0.55);
+    background-image: url(../../../assets/icons/icons8-поиск.svg);
+    background-repeat: no-repeat;
+    background-position: 26px 24px;
+    height:0;
+    max-width: 240px;
+    box-shadow: inset -6px -6px 10px rgba(255, 255, 255, 0.63), inset 6px 6px 20px 1px rgba(95, 140, 199, 0.33);
+    border-radius: 31px;
+    transition: 400ms;
+    @include font-face(24px, 600);
+    &::placeholder{
+        @include font-face(24px, 600);
+        color: rgba(95, 105, 127, 0.55);
+        transition: 200ms;
+    }
+    &:hover{
+        box-shadow: inset -6px -6px 25px rgba(255, 255, 255, 0.63), inset 6px 6px 20px 1px rgba(95, 140, 199, 0.2);
+        &::placeholder{
+            color: rgba(95, 105, 127, 0.301);
+        }
+    }
+    &:focus{
+        box-shadow: inset -6px -6px 25px rgba(255, 255, 255, 0.63), inset 6px 6px 20px 1px rgba(95, 140, 199, 0.2);
+    }
+}
+.container{
+    position: relative;
+}
+.svg{
+    position: absolute;
+    z-index: 1;
+    top: 24px;
+    left: 36px;
+}

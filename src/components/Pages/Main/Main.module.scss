@@ -1,0 +1,80 @@
+@import '../../../assets/styles/mixins.scss';
+.main{
+    max-width: 1780px;
+    position: relative;
+    z-index: 1;
+    padding: 0 70px;
+    margin: 40px auto;
+    @include font-face(24px, 400);
+}
+.mainHeader{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    &__logo{
+        border: 3px solid #FFFFFF;
+        box-shadow: 5px 4px 4px rgba(95, 140, 199, 0.33), inset -6px -6px 10px rgba(255, 255, 255, 0.63), inset 6px 6px 20px 1px rgba(95, 140, 199, 0.33);
+        border-radius: 31px;
+        padding: 22px 56px;
+        max-width: 800px;
+        h1{
+            @include font-face(56px, 700);
+            margin-bottom: 17px;
+            color: #FF5574;
+        }
+        &_active{
+            box-shadow: -10px -10px 25px 3px rgba(255, 255, 255, 0.63), 6px 6px 25px 1px rgba(95, 140, 199, 0.33);
+            border-radius: 31px;
+            padding: 25px 56px 239px;
+            max-width: 800px;
+            height: 0;
+            align-items: center;
+            transition: 200ms;
+            position: relative;
+            appearance: none;
+            overflow: hidden;
+            &::before {
+                --size: 0;
+                content: '';
+                position: absolute;
+                left: var(--x);
+                top: var(--y);
+                width: var(--size);
+                height: var(--size);
+                background: radial-gradient(circle closest-side, #e65f6385, transparent);
+                transform: translate(-60%, -60%);
+                transition: width .2s ease, height .2s ease;
+            }
+            &:hover{
+                transform: scale(1.05);
+                &::before {
+                    --size: 400px;
+                }
+            }
+            h1{
+                @include font-face(56px, 700);
+                margin-bottom: 17px;
+                color: #FF5574;
+                position: relative;
+                pointer-events: none;
+            }
+            p{
+                position: relative;
+                pointer-events: none;
+            }
+        }
+    }
+}
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 53px;
+    row-gap: 55px;
+    justify-content: center;
+    &__pagination{
+        display: flex;
+        justify-content: center;
+        margin-top: 40px
+    }
+}

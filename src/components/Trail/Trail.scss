@@ -1,0 +1,15 @@
+.draw-container {
+    position: absolute;
+  }
+.draw-container .image {
+  position: absolute;
+  display: block;
+  transform: translate(-175px, -175px);
+  width: 350px;
+  height: 350px;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  filter: blur(24.5px);
+  backdrop-filter: blur(29.5px);
+  overflow: hidden;
+}
