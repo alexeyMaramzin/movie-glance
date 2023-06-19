@@ -49,7 +49,7 @@ export const UIMovieCard = (props) => {
                             (props.film.rating>1)&&(props.film.rating<6)?styles.card__rating_red:
                             (props.film.rating>=6)&&(props.film.rating<7)?styles.card__rating_yellow:
                             (props.film.rating>=7)&&(props.film.rating<=10)?styles.card__rating_green:0)}>
-                            {props.film.rating=='null'?'?':props.film.rating}
+                            {props.film.rating==='null'?'?':props.film.rating}
                         </div>
                         <div style={{width: '99px'}}></div>
                     </h4>

@@ -1,12 +1,12 @@
 import styles from './UIRoundButton.module.scss'
 
 export const UIPaginationButton = (props) => {
+const height = (!props.slider)?0:900;
     return ( 
         <button 
             onClick={()=>{
                 props.setPage(props.page); 
-                props.setActive(props.page);
-                if(props.slider) window.scrollTo({top: 900, left: 0, behavior: "smooth"});
+                window.scrollTo({top: height, left: 0, behavior: "smooth"});
             }}
             className={props.page===props.active?styles.pagination__button_active:styles.pagination__button}
         >
