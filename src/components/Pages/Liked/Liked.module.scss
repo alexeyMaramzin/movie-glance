@@ -1,0 +1,13 @@
+.liked_grid{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 53px;
+    row-gap: 55px;
+    justify-content: center;
+    &__pagination{
+        display: flex;
+        justify-content: center;
+        margin-top: 40px
+    }
+}

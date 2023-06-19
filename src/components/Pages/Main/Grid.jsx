@@ -45,7 +45,7 @@ useEffect(()=>{
                 {
                     response.films?response.films.map(
                         film=><UIMovieCard key={film.filmId} film={film}/>
-                        ):null
+                    ):null
                 }
             </section>
             <div className={styles.grid__pagination}>

@@ -3,22 +3,27 @@ import styles from './UIMovieCard.module.scss'
 import {useState, useRef} from 'react'
 import axios from 'axios'
 import cn from 'classnames'
+import { useActions } from '../../../hooks/useActions'
+import { useFavourite } from '../../../hooks/useFavourite'
 
 export const UIMovieCard = (props) => {
     const API_KEY = "a4a19467-69da-45bf-a1bd-1be67bab2cee"
     const ID = `https://kinopoiskapiunofficial.tech/api/v2.2/films/${props.film.filmId}`
     const config ={
-    headers:{
-        "Content-Type": "application/json",
-        "X-API-KEY": API_KEY
+        headers:{
+            "Content-Type": "application/json",
+            "X-API-KEY": API_KEY
+        }
     }
-}
+    const {favourite} = useFavourite()
+    const {toggleFavourite} = useActions()
+    const isExist = favourite.some(m => m.filmId===props.film.filmId)
     const [like, setLike] = useState({"1":{}})
     const [front, setFront] = useState(true)
     const [description, setDescription] = useState('Movie')
     const [flag, setFlag] = useState(true)
     const [height, setHeight] = useState('850px')
-    const genres = props.film.genres.map((genre, i)=> genre.genre)
+    const genres = props.film.genres.map((genre)=> genre.genre)
     const heightRef = useRef()
     const getHeight = () => {
         setHeight(heightRef.current.getBoundingClientRect().height);
@@ -60,6 +65,8 @@ export const UIMovieCard = (props) => {
                         {genres.join(', ')}
                     </p>
                     <UILikeButton
+                        onClick={()=>toggleFavourite(props.film)}
+                        isExist = {isExist}
                         slide={1}
                         like={like}
                         setLike={setLike}
@@ -96,6 +103,8 @@ export const UIMovieCard = (props) => {
                 </div>
                 <div className={styles.back__like}>
                     <UILikeButton
+                        onClick={()=>toggleFavourite(props.film)}
+                        isExist = {isExist}
                         slide={1}
                         like={like}
                         setLike={setLike}

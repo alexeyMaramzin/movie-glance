@@ -11,6 +11,12 @@
     text-shadow: 5px 5px 10px #ac9494;
     color: white;
 }
+a:active,
+a:hover,  
+a {
+  text-decoration: none;
+  color: #666;
+}
 body::-webkit-scrollbar {
     width: 0.5em;
     height: 0.5em;
