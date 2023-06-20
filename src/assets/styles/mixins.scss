@@ -1,6 +1,7 @@
+@import '../../../variables.css';
 @mixin font-face ($size, $weight) {
     font-family: 'Comfortaa';
     font-size: $size;
     font-weight: $weight;
-    color: #5F697F;
+    color: var(--font-color);
 }

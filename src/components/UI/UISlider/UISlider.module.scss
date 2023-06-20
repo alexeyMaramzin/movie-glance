@@ -1,3 +1,4 @@
+@import '../../../variables.css';
 .slider{
     display: flex;
     background-color: #000000;
@@ -8,10 +9,10 @@
     font-size: 24px;
     font-weight: 400;
     position: relative;
-    color: #E6EEF8;
-    border: 3px solid #FFFFFF;
-    box-shadow: 5px 4px 4px rgba(95, 140, 199, 0.33), inset -6px -6px 10px rgba(255, 255, 255, 0.63), inset 6px 6px 22px 1px rgba(95, 140, 199, 0.33);
-    border-radius: 31px;
+    color: var(--slider-font);
+    border: 3px solid var(--border);
+    box-shadow: 5px 4px 4px var(--inset-shadow), inset -6px -6px 10px var(--shadow), inset 6px 6px 22px 1px var(--inset-shadow);
+    border-radius: 33px;
     height: 28em;
     &::before{
         content: '';
@@ -65,7 +66,7 @@
         margin-top: 20px;
         box-shadow: none;
         &_like{
-            background-color: #E6EEF8;
+            background-color: var(--background-color);
             border-radius: 50%;
             button{
                 box-shadow: none;

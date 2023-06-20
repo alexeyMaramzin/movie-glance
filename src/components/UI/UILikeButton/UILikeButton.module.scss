@@ -1,5 +1,6 @@
+@import "../../../variables.css";
 .like_button{
-    box-shadow: -10px -10px 25px 3px rgba(255, 255, 255, 0.63), 6px 6px 25px 1px rgba(95, 140, 199, 0.33);
+    box-shadow: -10px -10px 25px 3px var(--shadow), 6px 6px 25px 1px var(--inset-shadow);
     border-radius: 77px;
     padding: 16px 17px 9px;
     transition: 200ms;

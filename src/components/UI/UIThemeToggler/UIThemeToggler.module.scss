@@ -1,0 +1,67 @@
+.toggler{
+    width: 115px;
+    margin: 30px 0 0 auto;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 55px;
+    position: relative;
+    box-shadow: inset -6px -6px 10px var(--shadow), inset 6px 6px 20px 1px var(--inset-shadow);
+    &__thumb_light{
+        position: absolute;
+        border-radius: 55px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        box-shadow: 6px 6px 25px 1px var(--inset-shadow), -3px -3px 25px 3px var(--shadow);
+        border: 2px solid var(--border);
+        animation: slideout 200ms;
+    }
+    &__thumb_dark{
+        position: absolute;
+        border-radius: 55px;
+        right: 0;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        box-shadow: 6px 6px 25px 1px var(--inset-shadow), -3px -3px 25px 3px var(--shadow);
+        border: 2px solid var(--border);
+        animation: slidein 200ms;
+    }
+    svg{
+        margin: 10px;
+    }
+}
+@keyframes slidein {
+    0% {
+      left: 0;
+    }
+    25%{
+        left: 20px;
+    }
+    50% {
+        left: 40px;
+    }
+    75% {
+        left: 50px;
+    }
+    100% {
+      right: 0;
+    }
+}
+@keyframes slideout {
+    0% {
+        left: 50px;
+      }
+    25% {
+        left: 40px;
+    }
+    50% {
+        left: 30px;
+    }
+    75% {
+        left: 20px;
+    }
+    100% {
+        left: 0;
+    }
+}

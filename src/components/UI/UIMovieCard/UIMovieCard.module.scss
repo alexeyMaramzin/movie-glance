@@ -1,5 +1,6 @@
+@import '../../../variables.css';
 .card{
-    box-shadow: 6px 6px 25px 1px rgba(95, 140, 199, 0.33), -10px -10px 25px 3px rgba(255, 255, 255, 0.63);
+    box-shadow: 6px 6px 25px 1px var(--inset-shadow), -3px -3px 25px 3px var(--shadow);
     border-radius: 31px;
     width: 370px;
     display: flex;
@@ -115,7 +116,7 @@
         &__like{
             margin: 0 30px 30px auto;
             border-radius: 50%;
-            background-color: #E6EEF8;
+            background-color: var(--background-color);
             position: relative;
             z-index: 1;
             button{

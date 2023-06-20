@@ -1,0 +1,18 @@
+:root[data-theme="light"]{
+    --background-color: #E6EEF8;
+    --font-color: #5F697F;
+    --slider-font: #E6EEF8;
+    --shadow: #fff;
+    --inset-shadow: rgba(95, 140, 199, 0.33);
+    --border: #fff;
+    --shadow-pagination: rgba(95, 140, 199, 0.33);
+}
+:root[data-theme="dark"]{
+    --background-color: #000825;
+    --font-color: #8999BD;
+    --slider-font: #8999BD;
+    --shadow: #00020c;
+    --inset-shadow: #000625;
+    --border: #00020c;
+    --shadow-pagination: #000414;
+}

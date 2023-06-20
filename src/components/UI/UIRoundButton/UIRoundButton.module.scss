@@ -1,12 +1,13 @@
+@import '../../../variables.css';
 .round_button{
-    box-shadow:  6px 6px 25px 1px rgba(95, 140, 199, 0.33);
+    box-shadow:  6px 6px 25px 1px var(--inset-shadow);
     border-radius: 77px;
     padding: 22px 20px 16px;
     transition: 200ms;
     position: relative;
     appearance: none;
     overflow: hidden;
-    background-color: #E6EEF8;
+    background-color: var(--background-color);
     &::before {
         --size: 0;
         content: '';
@@ -48,7 +49,7 @@
     }
 }
 .pagination__button{
-    box-shadow:  6px 6px 25px 1px rgba(95, 140, 199, 0.33);
+    box-shadow:  6px 6px 25px 1px var(--shadow-pagination);
     border-radius: 77px;
     margin: 0 10px;
     width: 69px;

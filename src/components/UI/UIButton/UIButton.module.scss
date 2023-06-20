@@ -1,12 +1,13 @@
+@import "../../../variables.css";
 .UIButton{
     height: 0;
     display: flex;
     align-items: center;
-    border: 3px solid #FFFFFF;
-    box-shadow: 5px 4px 4px rgba(95, 140, 199, 0.33), inset -6px -6px 10px rgba(255, 255, 255, 0.63), inset 6px 6px 20px 1px rgba(95, 140, 199, 0.33);
+    border: 3px solid var(--border);
+    box-shadow: 5px 4px 4px var(--inset-shadow), inset -6px -6px 10px var(--shadow), inset 6px 6px 20px 1px var(--inset-shadow);
     border-radius: 31px;
     &__active{
-        box-shadow: -10px -10px 25px 3px rgba(255, 255, 255, 0.63), 6px 6px 25px 1px rgba(95, 140, 199, 0.33);
+        box-shadow: -10px -10px 25px 3px var(--shadow), 6px 6px 25px 1px var(--inset-shadow);
         border-radius: 31px;
         display: flex;
         align-items: center;

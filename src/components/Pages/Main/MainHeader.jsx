@@ -2,6 +2,7 @@ import styles from './Main.module.scss'
 import { UIButton, UIInput } from '../../UI'
 import {useState} from 'react'
 import { NavLink } from 'react-router-dom'
+import { UIThemeToggler } from '../../UI'
 
 export const MainHeader = (props) => {
 const [input, setInput] = useState('')
@@ -38,13 +39,17 @@ const [input, setInput] = useState('')
             />
           </div>
         </NavLink>
-        <UIInput
-          input={input}
-          setInput={setInput}
-          setSearch={props.setSearch}
-          text='поиск...'
-          padding='41px 32px 41px 88px'
-        />
+        <div>
+          <UIInput
+            input={input}
+            setInput={setInput}
+            setSearch={props.setSearch}
+            text='поиск...'
+            padding='41px 32px 41px 88px'
+          />
+          <UIThemeToggler/>
+        </div>
+        
     </header>
   )
 }
