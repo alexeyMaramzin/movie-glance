@@ -1,5 +1,3 @@
 export * from './Main'
 export * from './MainHeader'
-export * from './MainMain'
-export * from './MainFooter'
 export * from './Grid'

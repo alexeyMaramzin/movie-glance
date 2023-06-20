@@ -38,7 +38,7 @@ export const UIMovieCard = (props) => {
                 if(e.target.tagName!=='svg'&&e.target.tagName!=='BUTTON'&&e.target.tagName!=='path')
                 {getHeight();
                 setFront(!front);
-                if(flag) getDescription();}
+                if(flag && !props.film.recomendation) getDescription();}
             }}
             className={styles.rotate}>
             <div ref={heightRef} className={cn(styles.card, styles.front, front?0:styles.r_front)}>
@@ -65,7 +65,9 @@ export const UIMovieCard = (props) => {
                         {genres.join(', ')}
                     </p>
                     <UILikeButton
-                        onClick={()=>toggleFavourite(props.film)}
+                        onClick={()=>{
+                            toggleFavourite(props.film);
+                        }}
                         isExist = {isExist}
                         slide={1}
                         like={like}
@@ -87,7 +89,7 @@ export const UIMovieCard = (props) => {
                             {genres.join(', ')}
                         </p>
                         <p className={styles.card__description}>
-                            {description.description}
+                            {props.film.recomendation?props.film.description:description.description}
                         </p>
                         <h4 className={styles.card__rating}>
                             оценка:

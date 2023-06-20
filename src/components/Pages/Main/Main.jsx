@@ -11,13 +11,13 @@ const [search, setSearch] = useState('')
 const [slider, setSlider] = useState(true)
 
 useEffect(()=>{
-  const b = JSON.parse(localStorage.getItem('liked')) ;
-  if(b) b.map((a)=>toggleFavourite(a))
-}, [])
+  const storeMovies = JSON.parse(localStorage.getItem('liked')) ;
+  if(storeMovies) storeMovies.map((movie)=>toggleFavourite(movie))
+}, [toggleFavourite])
   return (
     <div className={styles.main}>
       <Router>
-        <MainHeader setSearch={setSearch}/>
+        <MainHeader active={slider} setActive={setSlider} setSearch={setSearch}/>
         <Routes>
           <Route path='/' element={
             <>
@@ -29,7 +29,6 @@ useEffect(()=>{
           <Route path='liked' element={<Liked/>}/>
         </Routes>
       </Router>
-        
     </div>
   )
 }

@@ -1,5 +1,4 @@
 import styles from './UIButton.module.scss';
-import cn from 'classnames';
 
 export const UIButton = (children) => {
   return (
@@ -10,8 +9,9 @@ export const UIButton = (children) => {
         e.target.style.setProperty('--x', x + 'px');
         e.target.style.setProperty('--y', y + 'px');
       }}
+      onClick={children.onClick}
       style={{padding: children.padding}}
-      className={cn(styles.UIButton)}
+      className={children.active?styles.UIButton__active:styles.UIButton}
     >
       <span style={{position: 'relative', pointerEvents: 'none'}}>{children.text}</span>
     </button>

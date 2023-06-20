@@ -2,6 +2,8 @@ import styles from './UISlider.module.scss'
 import { UIRoundButton, UILikeButton} from '../../UI'
 import {useState, useRef} from 'react'
 import films from '../../../recomendations.json'
+import { useActions } from '../../../hooks/useActions'
+import { useFavourite } from '../../../hooks/useFavourite'
 
 export const UISlider = () => {
     const [like, setLike] = useState(films)
@@ -9,8 +11,11 @@ export const UISlider = () => {
     const [active, setActive] = useState(false)
     const [active1, setActive1] = useState(false)
     const length=Object.keys(films).length
+    const {favourite} = useFavourite()
+    const {toggleFavourite} = useActions()
+    const isExist = favourite.some(m => m.filmId===films[slide].filmId)
     const ref = useRef()
-   
+    
     return ( 
         <div
             ref={ref}
@@ -24,7 +29,7 @@ export const UISlider = () => {
             <div
                 className={styles.slider__container}>
                 <h2>Рекомендую:</h2>
-                <h1>{films[slide].title}</h1>
+                <h1>{films[slide].nameRu}</h1>
                 <p className={styles.back__description}>
                     {films[slide].description}
                 </p>
@@ -46,6 +51,8 @@ export const UISlider = () => {
                     </div>
                     <div className={styles.slider__buttons_like}>
                        <UILikeButton
+                            onClick={()=>toggleFavourite(films[slide])}
+                            isExist={isExist}
                             slide={slide}
                             like={like}
                             setLike={setLike}

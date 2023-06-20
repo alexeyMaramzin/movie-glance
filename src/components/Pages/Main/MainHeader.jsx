@@ -9,14 +9,14 @@ const [input, setInput] = useState('')
     <header className={styles.mainHeader}>
         <NavLink to='/'>
           <div
-            onClick={()=>{props.setSearch(''); setInput('')}}
+            onClick={()=>{props.setSearch(''); setInput(''); props.setActive(true)}}
             onMouseMove={(e)=>{
               var x = e.pageX - e.target.offsetLeft;
               var y = e.pageY - e.target.offsetTop;
               setTimeout(()=>{e.target.style.setProperty('--x', x + 'px')}, 0);
               setTimeout(()=>{e.target.style.setProperty('--y', y + 'px')}, 0);
             }}
-            className={styles.mainHeader__logo_active}
+            className={props.active?styles.mainHeader__logo:styles.mainHeader__logo_active}
           > 
             <h1>
               Movie Glance
@@ -33,6 +33,8 @@ const [input, setInput] = useState('')
             <UIButton 
               text='понравившиеся фильмы'
               padding='41px 28px'
+              active={props.active}
+              onClick={()=>props.setActive(false)}
             />
           </div>
         </NavLink>

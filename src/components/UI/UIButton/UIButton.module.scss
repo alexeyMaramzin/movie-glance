@@ -1,29 +1,37 @@
 .UIButton{
-    box-shadow: -10px -10px 25px 3px rgba(255, 255, 255, 0.63), 6px 6px 25px 1px rgba(95, 140, 199, 0.33);
-    border-radius: 31px;
+    height: 0;
     display: flex;
     align-items: center;
-    height: 0;
-    transition: 200ms;
-    position: relative;
-    appearance: none;
-    overflow: hidden;
-    &::before {
-        --size: 0;
-        content: '';
-        position: absolute;
-        left: var(--x);
-        top: var(--y);
-        width: var(--size);
-        height: var(--size);
-        background: radial-gradient(circle closest-side, #e65f6385, transparent);
-        transform: translate(-50%, -50%);
-        transition: width .2s ease, height .2s ease;
-    }
-    &:hover{
-        transform: scale(1.05);
+    border: 3px solid #FFFFFF;
+    box-shadow: 5px 4px 4px rgba(95, 140, 199, 0.33), inset -6px -6px 10px rgba(255, 255, 255, 0.63), inset 6px 6px 20px 1px rgba(95, 140, 199, 0.33);
+    border-radius: 31px;
+    &__active{
+        box-shadow: -10px -10px 25px 3px rgba(255, 255, 255, 0.63), 6px 6px 25px 1px rgba(95, 140, 199, 0.33);
+        border-radius: 31px;
+        display: flex;
+        align-items: center;
+        height: 0;
+        transition: 200ms;
+        position: relative;
+        appearance: none;
+        overflow: hidden;
         &::before {
-            --size: 400px;
+            --size: 0;
+            content: '';
+            position: absolute;
+            left: var(--x);
+            top: var(--y);
+            width: var(--size);
+            height: var(--size);
+            background: radial-gradient(circle closest-side, #e65f6385, transparent);
+            transform: translate(-50%, -50%);
+            transition: width .2s ease, height .2s ease;
         }
+        &:hover{
+            transform: scale(1.05);
+            &::before {
+                --size: 400px;
+            }
+        }    
     }
 }
