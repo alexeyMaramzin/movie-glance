@@ -2,7 +2,7 @@ import styles from './UIThemeToggler.module.scss';
 import {ReactComponent as Light} from '../../../assets/icons/Light.svg'
 import {ReactComponent as Dark} from '../../../assets/icons/Dark.svg'
 import {ThemeContext, themes} from '../../../context/ThemeContext'
-import {useRef, useState} from 'react'
+import {useRef} from 'react'
 
 export const UIThemeToggler = () => {
 const thumb = useRef()

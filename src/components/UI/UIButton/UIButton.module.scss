@@ -3,7 +3,6 @@
     height: 0;
     display: flex;
     align-items: center;
-    border: 3px solid var(--border);
     box-shadow: 5px 4px 4px var(--inset-shadow), inset -6px -6px 10px var(--shadow), inset 6px 6px 20px 1px var(--inset-shadow);
     border-radius: 31px;
     &__active{

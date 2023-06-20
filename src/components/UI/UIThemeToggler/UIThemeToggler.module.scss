@@ -12,8 +12,7 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        box-shadow: 6px 6px 25px 1px var(--inset-shadow), -3px -3px 25px 3px var(--shadow);
-        border: 2px solid var(--border);
+        box-shadow: 6px 6px 25px 1px var(--inset-shadow), -3px -3px 25px 3px var(--shadow);  
         animation: slideout 200ms;
     }
     &__thumb_dark{
@@ -24,7 +23,6 @@
         height: 60px;
         border-radius: 50%;
         box-shadow: 6px 6px 25px 1px var(--inset-shadow), -3px -3px 25px 3px var(--shadow);
-        border: 2px solid var(--border);
         animation: slidein 200ms;
     }
     svg{
