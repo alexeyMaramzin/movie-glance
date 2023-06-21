@@ -6,6 +6,7 @@
     border-radius: 55px;
     position: relative;
     box-shadow: inset -6px -6px 10px var(--shadow), inset 6px 6px 20px 1px var(--inset-shadow);
+    cursor: pointer;
     &__thumb_light{
         position: absolute;
         border-radius: 55px;
