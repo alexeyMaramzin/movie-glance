@@ -1,8 +1,8 @@
 import styles from './UILikeButton.module.scss'
 import {ReactComponent as LikeIcon} from '../../../assets/icons/Like.svg'
 import {ReactComponent as LikeActive} from '../../../assets/icons/LikeActive.svg'
-export const UILikeButton = (props) => {
- 
+
+export const UILikeButton = (props) => { 
     return (
         <button 
             onClick={()=>{

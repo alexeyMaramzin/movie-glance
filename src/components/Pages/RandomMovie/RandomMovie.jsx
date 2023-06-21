@@ -12,7 +12,6 @@ const config ={
 }
 export const RandomMovie = (props) => {   
 const [response, setResponse] = useState();
-const [render, setRender] = useState(false)
 useEffect(()=>{
     axios.get(RANDOM, config).then(
         (res)=>{const result=res.data; setResponse(result); console.log(response)}

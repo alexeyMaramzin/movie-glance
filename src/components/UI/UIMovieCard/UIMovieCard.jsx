@@ -5,16 +5,16 @@ import axios from 'axios'
 import cn from 'classnames'
 import { useActions } from '../../../hooks/useActions'
 import { useFavourite } from '../../../hooks/useFavourite'
-
-export const UIMovieCard = (props) => {
-    const API_KEY = "a4a19467-69da-45bf-a1bd-1be67bab2cee"
-    const ID = `https://kinopoiskapiunofficial.tech/api/v2.2/films/${props.film.filmId}`
-    const config ={
+const API_KEY = "a4a19467-69da-45bf-a1bd-1be67bab2cee"
+const config ={
         headers:{
             "Content-Type": "application/json",
             "X-API-KEY": API_KEY
         }
     }
+
+export const UIMovieCard = (props) => {    
+    const ID = `https://kinopoiskapiunofficial.tech/api/v2.2/films/${props.film.filmId}`
     const {favourite} = useFavourite()
     const {toggleFavourite} = useActions()
     const isExist = props.film.filmId?favourite.some(m => m.filmId===props.film.filmId):favourite.some(m => m.id===props.film.id)

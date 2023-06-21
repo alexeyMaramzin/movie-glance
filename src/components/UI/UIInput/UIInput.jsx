@@ -1,6 +1,8 @@
 import styles from './UIInput.module.scss';
+import {useNavigate} from 'react-router-dom';
 
 export const UIInput = (props) => {
+const navigate = useNavigate();
   return (
     <div className={styles.container}>
         <div
@@ -11,6 +13,7 @@ export const UIInput = (props) => {
           onSubmit={(e)=>{
             e.preventDefault();
             props.setSearch(props.input);
+            navigate('/')
           }}
         >
           <input

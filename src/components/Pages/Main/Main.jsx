@@ -3,9 +3,10 @@ import {MainHeader, Grid} from '../Main'
 import {Liked} from '../Liked'
 import styles from './Main.module.scss'
 import {useEffect, useState} from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { useActions } from '../../../hooks/useActions'
 import { RandomMovie } from '../RandomMovie/RandomMovie'
+
 export const Main = () => {
 const {toggleFavourite} = useActions()
 const [search, setSearch] = useState('')
@@ -16,6 +17,7 @@ useEffect(()=>{
   const storeMovies = JSON.parse(localStorage.getItem('liked')) ;
   if(storeMovies) storeMovies.map((movie)=>toggleFavourite(movie))
 }, [toggleFavourite])
+
   return (
     <div className={styles.main}>
       <Router>
@@ -30,6 +32,7 @@ useEffect(()=>{
           />
           <Route path='liked' element={<Liked/>}/>
           <Route path='random' element={<RandomMovie random={random}/>}/>
+
         </Routes>
       </Router>
     </div>
