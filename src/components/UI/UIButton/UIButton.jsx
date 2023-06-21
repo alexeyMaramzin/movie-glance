@@ -13,7 +13,7 @@ export const UIButton = (children) => {
       style={{padding: children.padding}}
       className={children.active?styles.UIButton__active:styles.UIButton}
     >
-      <span style={{position: 'relative', pointerEvents: 'none'}}>{children.text}</span>
+      <span style={{position: 'relative', pointerEvents: 'none', display: 'flex', alignItems: 'center', gap: '20px'}}>{children.text}{children.icon}</span>
     </button>
   )
 }

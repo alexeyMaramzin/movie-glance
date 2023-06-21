@@ -17,13 +17,13 @@ export const UIMovieCard = (props) => {
     }
     const {favourite} = useFavourite()
     const {toggleFavourite} = useActions()
-    const isExist = favourite.some(m => m.filmId===props.film.filmId)
+    const isExist = props.film.filmId?favourite.some(m => m.filmId===props.film.filmId):favourite.some(m => m.id===props.film.id)
     const [like, setLike] = useState({"1":{}})
     const [front, setFront] = useState(true)
     const [description, setDescription] = useState('Movie')
     const [flag, setFlag] = useState(true)
     const [height, setHeight] = useState('850px')
-    const genres = props.film.genres.map((genre)=> genre.genre)
+    const genres = props.film.filmId?props.film.genres.map((genre)=> genre.genre):props.film.genres.map((genre)=>genre.name)
     const heightRef = useRef()
     const getHeight = () => {
         setHeight(heightRef.current.getBoundingClientRect().height);
@@ -32,37 +32,41 @@ export const UIMovieCard = (props) => {
         axios.get(ID, config).then((res)=>{const result=res.data; setDescription(result); setFlag(false)})
         console.log("Get description")
     }
+    const getRating = (rating)=>{
+        if((rating>1)&&(rating<6)) return styles.card__rating_red; else
+        if((rating>=6)&&(rating<7)) return styles.card__rating_yellow; else
+        if((rating>=7)&&(rating<=10)) return styles.card__rating_green; else return 0
+    }
+    
     return (
         <article
             onClick={(e)=>{
                 if(e.target.tagName!=='svg'&&e.target.tagName!=='BUTTON'&&e.target.tagName!=='path')
                 {getHeight();
                 setFront(!front);
-                if(flag && !props.film.recomendation) getDescription();}
+                if(flag && !props.film.recomendation && props.film.filmId) getDescription();}
             }}
             className={styles.rotate}>
             <div ref={heightRef} className={cn(styles.card, styles.front, front?0:styles.r_front)}>
                 <img
                     className={styles.card__image}
-                    src={props.film.posterUrlPreview}
+                    src={props.film.filmId?props.film.posterUrlPreview:props.film.poster.previewUrl}
                     alt='123'
                 />
                 <div className={styles.card__wrapper}>
                     <h4 className={styles.card__rating}>
                         оценка:
                         <div className={cn(styles.card__rating_value, 
-                            (props.film.rating>1)&&(props.film.rating<6)?styles.card__rating_red:
-                            (props.film.rating>=6)&&(props.film.rating<7)?styles.card__rating_yellow:
-                            (props.film.rating>=7)&&(props.film.rating<=10)?styles.card__rating_green:0)}>
-                            {props.film.rating==='null'?'?':props.film.rating}
+                            props.film.filmId?getRating(props.film.rating):props.film.rating.kp?getRating(props.film.rating.kp):0)}>
+                            {props.film.filmId?props.film.rating==='null'?'?':props.film.rating:props.film.rating.kp}
                         </div>
                         <div style={{width: '99px'}}></div>
                     </h4>
-                    <h1 style={{marginTop: '18px'}}>{props.film.nameRu}</h1>
+                    <h1 style={{marginTop: '18px'}}>{props.film.filmId?props.film.nameRu:props.film.name}</h1>
                 </div> 
                 <div className={styles.card__genres}>
                     <p className={styles.card__genres_list}>
-                        {genres.join(', ')}
+                        {genres?genres.join(', '):null}
                     </p>
                     <UILikeButton
                         onClick={()=>{
@@ -78,26 +82,24 @@ export const UIMovieCard = (props) => {
             <div
                 style={{
                     height: height,
-                    backgroundImage: `url(${props.film.posterUrlPreview})`
+                    backgroundImage: `url(${props.film.filmId?props.film.posterUrlPreview:props.film.poster})`
                 }}
                     className={cn(styles.card, styles.back, front?0:styles.r_back)
                 }>
                 <div className={styles.back__content}>
                     <div className={styles.back__content_wrapper}>
-                        <h1 style={{margin: '18px 0 18px 0', fontSize: '32px'}}>{props.film.nameRu}</h1>
+                        <h1 style={{margin: '18px 0 18px 0', fontSize: '32px'}}>{props.film.filmId?props.film.nameRu:props.film.name}</h1>
                         <p style={{color: '#FFD600'}} className={styles.card__genres_list}>
-                            {genres.join(', ')}
+                            {genres?genres.join(', '):null}
                         </p>
                         <p className={styles.card__description}>
-                            {props.film.recomendation?props.film.description:description.description}
+                            {(props.film.recomendation||!props.film.filmId)?props.film.description:description.description}
                         </p>
                         <h4 className={styles.card__rating}>
                             оценка:
                             <div className={cn(styles.card__rating_value, 
-                                (props.film.rating>1)&&(props.film.rating<6)?styles.card__rating_red:
-                                (props.film.rating>=6)&&(props.film.rating<7)?styles.card__rating_yellow:
-                                (props.film.rating>=7)&&(props.film.rating<=10)?styles.card__rating_green:0)}>
-                                {props.film.rating}
+                                getRating(props.film.filmId?props.film.rating:props.film.rating.kp))}>
+                                {props.film.filmId?props.film.rating:props.film.rating.kp}
                             </div>
                             <div style={{width: '99px'}}></div>
                         </h4>

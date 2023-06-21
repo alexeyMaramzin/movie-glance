@@ -7,9 +7,9 @@ export const favouriteSlice = createSlice({
     initialState,
     reducers: {
         toggleFavourite: (state, {payload: movie})=>{
-            const isExist = state.some(m => m.filmId===movie.filmId)
+            const isExist = movie.filmId?state.some(m => m.filmId===movie.filmId):state.some(m => m.id===movie.id)
             if(isExist) {
-                const index = state.findIndex(item=>item.filmId===movie.filmId);
+                const index = movie.filmId?state.findIndex(item=>item.filmId===movie.filmId):state.findIndex(item=>item.id===movie.id);
                 localStorage.removeItem('liked', JSON.stringify(movie))
                 if(index!==-1){
                     state.splice(index, 1)
