@@ -82,7 +82,7 @@ export const UIMovieCard = (props) => {
             <div
                 style={{
                     height: height,
-                    backgroundImage: `url(${props.film.filmId?props.film.posterUrlPreview:props.film.poster})`
+                    backgroundImage: `url(${props.film.filmId?props.film.posterUrlPreview:props.film.poster.previewUrl})`
                 }}
                     className={cn(styles.card, styles.back, front?0:styles.r_back)
                 }>

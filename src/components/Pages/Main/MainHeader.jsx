@@ -79,7 +79,6 @@ useEffect(()=>{
           />
           <UIThemeToggler/>
         </div>
-        
     </header>
   )
 }
