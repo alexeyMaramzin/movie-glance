@@ -2,13 +2,19 @@ import styles from './Main.module.scss'
 import { UIButton, UIInput } from '../../UI'
 import {useEffect, useState} from 'react'
 import { NavLink } from 'react-router-dom'
-import { UIThemeToggler } from '../../UI'
+import { UIThemeToggler, UIHamburger } from '../../UI'
 import {ReactComponent as Random} from '../../../assets/icons/random.svg'
 
 export const MainHeader = (props) => {
 const [input, setInput] = useState('')
 const [logoActive, setLogoActive] = useState(false)
 const [likedActive, setLikedActive] = useState(true)
+const [resolution, setResolution] = useState(window.innerWidth)
+useEffect(()=>{
+  const handleResolution=()=>setResolution(window.innerWidth)
+  window.addEventListener('resize', handleResolution)
+  return ()=>window.removeEventListener('resize', handleResolution)
+}, [])
 useEffect(()=>{
   if(input) {setLogoActive(true); setLikedActive(true)}
   else {setLogoActive(false)}
@@ -36,9 +42,11 @@ useEffect(()=>{
             </p>
           </div>
         </NavLink>
-        <div>
+        {resolution<768?<UIHamburger/>:null}
+        {!(resolution<768)?
+        <div className={styles.mainHeader__wrapper}>
           <NavLink to='/liked'>
-            <div style={{margin: '0 20px'}}>
+            <div className={styles.mainHeader__header}>
               <UIButton 
                 text='понравившиеся фильмы'
                 padding='41px 28px'
@@ -55,7 +63,8 @@ useEffect(()=>{
               onClick={()=>{
                 props.setRandom(props.random+1);
               }} 
-              style={{margin: '22px 20px'}}>
+              className={styles.mainHeader__random}
+              >
               <UIButton
                 text='испытать удачу'
                 padding='40px 40px'
@@ -69,7 +78,8 @@ useEffect(()=>{
             </div>
           </NavLink>
         </div>
-        <div>
+        :null}
+        <div className={styles.mainHeader__search}>
           <UIInput
             input={input}
             setInput={setInput}
