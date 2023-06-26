@@ -21,10 +21,14 @@ export const UISlider = () => {
             ref={ref}
             className={styles.slider}
             style={{backgroundImage: `url(${films[slide].src})`}}
+            onTouchMove={(e)=>{
+                    ref.current.style.backgroundPositionX = e.clientX/10-200 + "px" 
+                    ref.current.style.backgroundPositionY = e.clientY/10-100 + "px"
+                }}
             onMouseMove={(e)=>{
-                ref.current.style.backgroundPositionX = e.clientX/10-200 + "px" 
-                ref.current.style.backgroundPositionY = e.clientY/10-100 + "px"
-              }}
+                    ref.current.style.backgroundPositionX = e.clientX/10-200 + "px" 
+                    ref.current.style.backgroundPositionY = e.clientY/10-100 + "px"
+                }}
             >
             <div
                 className={styles.slider__container}>

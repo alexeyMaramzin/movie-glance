@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import {useState} from 'react'
 import cn from 'classnames'
 
-export const UIHamburger = () => {
+export const UIHamburger = (props) => {
 const [active, setActive] = useState(true)
   return (
     <div 
@@ -15,12 +15,16 @@ const [active, setActive] = useState(true)
             <span></span>
         </button>
         <ul className={cn(styles.hamburger__section, active?null:styles.hamburger__section_active)}>
-          <li className={styles.hamburger__section_item}>
+          <li 
+            onClick={()=>props.setLogoActive(true)}
+            className={styles.hamburger__section_item}>
             <NavLink to='/liked'>
               Понравившиеся фильмы
             </NavLink>
           </li>
-          <li className={styles.hamburger__section_item}>
+          <li 
+            onClick={()=>props.setLogoActive(true)}
+            className={styles.hamburger__section_item}>
             <NavLink to='/random'>
               Испытать удачу
             </NavLink>

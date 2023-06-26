@@ -13,6 +13,7 @@ const navigate = useNavigate();
           onSubmit={(e)=>{
             e.preventDefault();
             props.setSearch(props.input);
+            props.setInput('')
             navigate('/')
           }}
         >

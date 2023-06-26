@@ -16,8 +16,12 @@ useEffect(()=>{
   return ()=>window.removeEventListener('resize', handleResolution)
 }, [])
 useEffect(()=>{
-  if(input) {setLogoActive(true); setLikedActive(true)}
-  else {setLogoActive(false)}
+  if(input) {
+    setLogoActive(true); setLikedActive(true)
+  }
+  else {
+    setLogoActive(false);
+  }
 }, [input])
   return (
     <header className={styles.mainHeader}>
@@ -25,7 +29,6 @@ useEffect(()=>{
           <div
             onClick={()=>{
               props.setSearch(''); setInput(''); setLogoActive(false); setLikedActive(true);
-              if(resolution<768) setLogoActive(true)
             }}
             onMouseMove={(e)=>{
               var x = e.pageX - e.target.offsetLeft;
@@ -45,7 +48,7 @@ useEffect(()=>{
             </p>
           </div>
         </NavLink>
-        {resolution<768?<UIHamburger/>:null}
+        {resolution<768?<UIHamburger setLogoActive={setLogoActive}/>:null}
         {!(resolution<768)?
         <div className={styles.mainHeader__wrapper}>
           <NavLink to='/liked'>
@@ -65,6 +68,7 @@ useEffect(()=>{
             <div 
               onClick={()=>{
                 props.setRandom(props.random+1);
+                if (resolution<768) setLogoActive(true)
               }} 
               className={styles.mainHeader__random}
               >

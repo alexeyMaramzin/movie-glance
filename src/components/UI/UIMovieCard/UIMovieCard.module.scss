@@ -89,6 +89,7 @@
         position: absolute;
         top: 0;
         left: 0;
+        overflow: hidden;
         color: #E6EEF8;
         background-repeat: no-repeat;
         background-size: cover;
@@ -129,6 +130,7 @@
     }
     .r_back{
         transform: perspective(500px) rotateY(0deg);
+        overflow: hidden;
     }
 }
 @media screen and (max-width: 1800px) {
@@ -137,11 +139,19 @@
         &__wrapper{
             max-width: 400px;
         }
+        &__description{
+            font-size: 19px;
+            height: 300px;
+        }
     }
 }
 @media screen and (max-width: 380px){
     .card{
         max-width: 300px;
+        &__description{
+            font-size: 19px;
+            height: 300px;
+        }
         &__rating{
             gap: 10px;
             font-size: 19px;
