@@ -1,7 +1,12 @@
 .hamburger{
     position: absolute;
-    left: 15px;
-    top: -15px;
+    left: 0;
+    top: -40px;
+    padding: 15px;
+    &__button{
+        z-index: 2;
+        position: absolute;
+    }
     span{
         background-color: #FF5574;
         display: block;
@@ -10,8 +15,8 @@
         margin-bottom: 8px;
         border-radius: 5px;
         transition: .2s ease all;
-    }
-    &__cross{
+    } 
+    &__toggler{  
         span:nth-child(1){
             transform: rotate(45deg);
             transform-origin: 5% 15%;
@@ -23,5 +28,47 @@
             transform: rotate(-45deg);
             transform-origin: 7% 93%;
         }
+    }
+    &__section{
+        height: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        backdrop-filter: blur(8px);
+        box-shadow: -10px -10px 25px 3px var(--shadow), 6px 6px 25px 1px var(--inset-shadow);
+        border-bottom-right-radius: 15px;
+        &_active{
+            height:fit-content;
+            width: 85vw;
+            padding: 80px 20px 40px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            animation: hamburger 150ms;
+        }
+        &_item{
+            list-style-type: none;
+            width: fit-content;
+            text-decoration:underline;
+        }
+    }
+}
+@keyframes hamburger {
+    0% {
+        left: -300px;
+    }
+    25% {
+        left: -220px;
+    }
+    50% {
+        left: -140px;
+    }
+    75% {
+        left: -60px;
+    }
+    100% {
+        left: 0;
     }
 }

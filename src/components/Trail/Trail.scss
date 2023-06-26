@@ -13,3 +13,8 @@
   backdrop-filter: blur(29.5px);
   overflow: hidden;
 }
+@media screen and (max-width: 589px){
+  .draw-container{
+    display: none;
+  }
+}

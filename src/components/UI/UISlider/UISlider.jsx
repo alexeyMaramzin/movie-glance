@@ -41,7 +41,7 @@ export const UISlider = () => {
                             onClick={()=>{slide===1?setSlide(length):setSlide(slide-1); 
                                 setTimeout(()=>{setActive(false)}, 200);setActive(true);}}
                         /> 
-                        <span style={{margin: '18px'}}/>
+                        <span className={styles.slider__buttons_gap}/>
                         <UIRoundButton 
                             arrow='right'
                             active={active1}

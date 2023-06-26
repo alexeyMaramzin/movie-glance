@@ -65,6 +65,9 @@
         margin-bottom: 35px;
         margin-top: 20px;
         box-shadow: none;
+        &_gap{
+            margin: 18px;
+        }
         &_like{
             background-color: var(--background-color);
             border-radius: 50%;
@@ -81,4 +84,23 @@
         50% { opacity: 0.5 }
         100% { opacity: 1 }
       }
+}
+@media screen and (max-width: 589px){
+    .slider__container{
+        padding: 15px 25px;
+    }
+}
+@media screen and (max-width: 380px){
+    .slider__container{
+        width: 100%;
+        font-size: 18px;
+        h1{
+            padding: 24px 0 35px;
+        }
+    }
+    .slider__buttons{
+        &_gap{
+            margin: 4px;
+        }
+    }
 }

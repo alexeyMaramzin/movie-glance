@@ -133,9 +133,28 @@
 }
 @media screen and (max-width: 1800px) {
     .card{
-        width: 400px;
+        max-width: 400px;
         &__wrapper{
             max-width: 400px;
+        }
+    }
+}
+@media screen and (max-width: 380px){
+    .card{
+        max-width: 300px;
+        &__rating{
+            gap: 10px;
+            font-size: 19px;
+        }
+        &__wrapper{
+            max-width: 300px;
+            h1{
+                font-size: 24px;
+            }
+        }
+        &__genres_list{
+            font-size: 19px;
+            width: 160px;
         }
     }
 }

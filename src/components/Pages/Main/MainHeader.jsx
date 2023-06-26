@@ -23,7 +23,10 @@ useEffect(()=>{
     <header className={styles.mainHeader}>
         <NavLink to='/'>
           <div
-            onClick={()=>{props.setSearch(''); setInput(''); setLogoActive(false); setLikedActive(true)}}
+            onClick={()=>{
+              props.setSearch(''); setInput(''); setLogoActive(false); setLikedActive(true);
+              if(resolution<768) setLogoActive(true)
+            }}
             onMouseMove={(e)=>{
               var x = e.pageX - e.target.offsetLeft;
               var y = e.pageY - e.target.offsetTop;
