@@ -10,7 +10,7 @@ const config ={
     }
 }
 
-export const Grid = ({slider, setSlider, search}) => {
+export const Grid = ({setLogoActive, slider, setSlider, search, setWatch}) => {
 const [page, setPage] = useState(1)
 const POPULAR = `https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=${page}`
 const SEARCH = `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${search +'&page='+ page}`
@@ -44,7 +44,7 @@ useEffect(()=>{
             <section className={styles.grid}>
                 {
                     response.films?response.films.map(
-                        film=><UIMovieCard key={film.filmId} film={film}/>
+                        film=><UIMovieCard setLogoActive={setLogoActive} setWatch={setWatch} key={film.filmId} film={film}/>
                     ):null
                 }
             </section>

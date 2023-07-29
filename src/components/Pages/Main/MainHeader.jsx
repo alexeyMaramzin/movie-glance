@@ -7,8 +7,6 @@ import {ReactComponent as Random} from '../../../assets/icons/random.svg'
 
 export const MainHeader = (props) => {
 const [input, setInput] = useState('')
-const [logoActive, setLogoActive] = useState(false)
-const [likedActive, setLikedActive] = useState(true)
 const [resolution, setResolution] = useState(window.innerWidth)
 useEffect(()=>{
   const handleResolution=()=>setResolution(window.innerWidth)
@@ -17,10 +15,10 @@ useEffect(()=>{
 }, [])
 useEffect(()=>{
   if(input) {
-    setLogoActive(true); setLikedActive(true)
+    props.setLogoActive(true); props.setLikedActive(true)
   }
   else {
-    setLogoActive(false);
+    props.setLogoActive(false);
   }
 }, [input])
   return (
@@ -28,7 +26,7 @@ useEffect(()=>{
         <NavLink to='/'>
           <div
             onClick={()=>{
-              props.setSearch(''); setInput(''); setLogoActive(false); setLikedActive(true);
+              props.setSearch(''); setInput(''); props.setLogoActive(false); props.setLikedActive(true);
             }}
             onMouseMove={(e)=>{
               var x = e.pageX - e.target.offsetLeft;
@@ -36,7 +34,7 @@ useEffect(()=>{
               setTimeout(()=>{e.target.style.setProperty('--x', x + 'px')}, 0);
               setTimeout(()=>{e.target.style.setProperty('--y', y + 'px')}, 0);
             }}
-            className={!logoActive?styles.mainHeader__logo:styles.mainHeader__logo_active}
+            className={!props.logoActive?styles.mainHeader__logo:styles.mainHeader__logo_active}
           > 
             <h1>
               Movie Glance
@@ -48,7 +46,7 @@ useEffect(()=>{
             </p>
           </div>
         </NavLink>
-        {resolution<768?<UIHamburger setLogoActive={setLogoActive}/>:null}
+        {resolution<768?<UIHamburger setLogoActive={props.setLogoActive}/>:null}
         {!(resolution<768)?
         <div className={styles.mainHeader__wrapper}>
           <NavLink to='/liked'>
@@ -56,10 +54,10 @@ useEffect(()=>{
               <UIButton 
                 text='понравившиеся фильмы'
                 padding='41px 28px'
-                active={likedActive}
+                active={props.likedActive}
                 onClick={()=>{
-                  setLikedActive(false);
-                  setLogoActive(true);
+                  props.setLikedActive(false);
+                  props.setLogoActive(true);
                 }}
               />
             </div>
@@ -68,7 +66,7 @@ useEffect(()=>{
             <div 
               onClick={()=>{
                 props.setRandom(props.random+1);
-                if (resolution<768) setLogoActive(true)
+                if (resolution<768) props.setLogoActive(true)
               }} 
               className={styles.mainHeader__random}
               >
@@ -78,8 +76,8 @@ useEffect(()=>{
                 active={true}
                 icon={<Random/>}
                 onClick={()=>{
-                  setLogoActive(true);
-                  setLikedActive(true)
+                  props.setLogoActive(true);
+                  props.setLikedActive(true)
                 }}
               />
             </div>

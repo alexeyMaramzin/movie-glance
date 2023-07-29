@@ -68,6 +68,7 @@
     &__description{
         margin-bottom: 30px;
         overflow-y: scroll;
+        overflow-x: hidden;
         &::-webkit-scrollbar{
             width: 0.3em;
             &-thumb{
@@ -116,12 +117,34 @@
         }
         &__like{
             margin: 0 30px 30px auto;
-            border-radius: 50%;
             background-color: var(--background-color);
             position: relative;
             z-index: 1;
+            border-radius: 50%;
             button{
                 box-shadow: none;
+            }
+        }
+        &__watch{
+            margin-left: 30px;
+            color: #5F697F;
+            button{
+                background-color: var(--background-color);
+                position: relative;
+                z-index: 1;
+                box-shadow: none;
+                transition: 0.4s;
+                &:hover{
+                    transform: none;
+                    color: #E6EEF8;
+                    &::before{
+                        background: radial-gradient(circle closest-side, rgba(230, 95, 99, 0.8), transparent);
+                    }
+                }
+                &::before{
+                    left: 100px;
+                    top: 40px;
+                }
             }
         }
     }
@@ -136,6 +159,7 @@
 @media screen and (max-width: 1800px) {
     .card{
         max-width: 400px;
+        margin: 0 auto;
         &__wrapper{
             max-width: 400px;
         }
@@ -145,7 +169,7 @@
         }
     }
 }
-@media screen and (max-width: 380px){
+@media screen and (max-width: 450px){
     .card{
         max-width: 300px;
         &__description{

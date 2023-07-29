@@ -16,11 +16,10 @@
         height: 0;
         cursor: default;
         align-items: center;
-        border: 3px solid var(--border);
+        border: 1px solid var(--border);
         box-shadow: 5px 4px 4px var(--inset-shadow), inset -6px -6px 10px var(--shadow), inset 6px 6px 20px 1px var(--inset-shadow);
         border-radius: 31px;
         padding: 25px 56px 239px;
-        max-width: 800px;
         h1{
             @include font-face(56px, 700);
             margin-bottom: 17px;
@@ -29,8 +28,7 @@
         &_active{
             box-shadow: -10px -10px 25px 3px var(--shadow), 6px 6px 25px 1px var(--inset-shadow);
             border-radius: 31px;
-            padding: 25px 56px 239px;
-            max-width: 800px;
+            padding: 25px 56px 200px;
             height: 0;
             align-items: center;
             transition: 200ms;
@@ -50,7 +48,7 @@
                 transition: width .2s ease, height .2s ease;
             }
             &:hover{
-                transform: scale(1.05);
+                transform: scale(1.02);
                 &::before {
                     --size: 400px;
                 }

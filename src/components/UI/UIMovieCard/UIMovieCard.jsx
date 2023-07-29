@@ -5,6 +5,8 @@ import axios from 'axios'
 import cn from 'classnames'
 import { useActions } from '../../../hooks/useActions'
 import { useFavourite } from '../../../hooks/useFavourite'
+import { UIButton } from '../UIButton/UIButton'
+import { NavLink } from 'react-router-dom'
 const API_KEY = "a4a19467-69da-45bf-a1bd-1be67bab2cee"
 const config ={
         headers:{
@@ -105,14 +107,31 @@ export const UIMovieCard = (props) => {
                         </h4>
                     </div>
                 </div>
-                <div className={styles.back__like}>
-                    <UILikeButton
-                        onClick={()=>toggleFavourite(props.film)}
-                        isExist = {isExist}
-                        slide={1}
-                        like={like}
-                        setLike={setLike}
-                    />
+                <div style={{display: 'flex'}}>
+                    <div
+                        onClick={()=>{
+                            props.setWatch(`https://api1595508308.multikland.net/embed/kp/${props.film.filmId?props.film.filmId:props.film.id}/?theme=1`);
+                            if (props.setLogoActive) props.setLogoActive(true)
+                            if (props.setLikedActive) props.setLikedActive(true)
+                        }} 
+                        className={styles.back__watch}>
+                        <NavLink to ='/watch'>
+                            <UIButton
+                                padding='35px 25px'
+                                text='Смотреть'
+                                active={true}
+                                />
+                        </NavLink>
+                    </div>
+                    <div className={styles.back__like}>
+                        <UILikeButton
+                            onClick={()=>toggleFavourite(props.film)}
+                            isExist = {isExist}
+                            slide={1}
+                            like={like}
+                            setLike={setLike}
+                        />
+                    </div>
                 </div>
             </div>
         </article>

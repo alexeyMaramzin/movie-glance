@@ -1,11 +1,13 @@
 import styles from './UISlider.module.scss'
-import { UIRoundButton, UILikeButton} from '../../UI'
+import { UIRoundButton, UILikeButton, UIButton} from '../../UI'
 import {useState, useRef} from 'react'
 import films from '../../../recomendations.json'
 import { useActions } from '../../../hooks/useActions'
 import { useFavourite } from '../../../hooks/useFavourite'
+import { NavLink } from 'react-router-dom'
+import { ReactComponent as Play } from '../../../assets/icons/play-svgrepo-com.svg' 
 
-export const UISlider = () => {
+export const UISlider = (props) => {
     const [like, setLike] = useState(films)
     const [slide, setSlide] = useState(1)
     const [active, setActive] = useState(false)
@@ -53,14 +55,32 @@ export const UISlider = () => {
                                 setTimeout(()=>{setActive1(false)}, 200);setActive1(true);}}
                         />
                     </div>
-                    <div className={styles.slider__buttons_like}>
-                       <UILikeButton
-                            onClick={()=>toggleFavourite(films[slide])}
-                            isExist={isExist}
-                            slide={slide}
-                            like={like}
-                            setLike={setLike}
-                        /> 
+                    <div className={styles.slider__buttons__wrapper}>
+                        <div
+                            onClick={()=>{
+                                props.setWatch(`https://api1595508308.multikland.net/embed/kp/${films[slide].filmId}/?theme=1`);
+                                if (props.setLogoActive)props.setLogoActive(true)
+                            }} 
+                            className={styles.slider__buttons__watch}
+                            >
+                            <NavLink to ='/watch'>
+                                <UIButton
+                                    padding='35px 25px'
+                                    text='Смотреть'
+                                    active={true}
+                                    icon={<Play/>}
+                                    />
+                            </NavLink>
+                        </div>
+                        <div className={styles.slider__buttons_like}>
+                           <UILikeButton
+                                onClick={()=>toggleFavourite(films[slide])}
+                                isExist={isExist}
+                                slide={slide}
+                                like={like}
+                                setLike={setLike}
+                            /> 
+                        </div>
                     </div>
                 </div>
             </div>

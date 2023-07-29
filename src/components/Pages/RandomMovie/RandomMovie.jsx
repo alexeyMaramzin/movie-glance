@@ -14,13 +14,15 @@ export const RandomMovie = (props) => {
 const [response, setResponse] = useState();
 useEffect(()=>{
     axios.get(RANDOM, config).then(
-        (res)=>{const result=res.data; setResponse(result); console.log(response)}
+        (res)=>{const result=res.data; setResponse(result)}
     ); 
-    console.log(props.random)
 }, [props.random])
     return (
-        <section className={styles.random}>
+        <section 
+            className={styles.random}>
             {response?<UIMovieCard
+                setWatch={props.setWatch}
+                setLikedActive={props.setLikedActive}
                 film={response}
             />:<></>}
         </section>
